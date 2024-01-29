@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -21,56 +23,43 @@ class AlertBoxState extends State<AlertBox> {
   @override
   void initState() {
     super.initState();
-
-    //! fire alert
     dbR.child('Alert/fire').onValue.listen((event) {
-      final fire = event.snapshot.value;
-      if (fire == 0) {
-        setState(() {
-          alertIcon = Icon(Icons.check);
-          alert = Text('No nothing f');
-        });
-      } else {
+      fire = event.snapshot.value as int;
+      updateAlertState();
+    });
+
+    dbR.child('Alert/gas').onValue.listen((event) {
+      gas = event.snapshot.value as int;
+      updateAlertState();
+    });
+  }
+
+  void updateAlertState() {
+    sum = gas + fire;
+
+    if (sum == 1) {
+      if (fire == 1) {
         setState(() {
           alertIcon = Icon(Icons.fireplace_outlined);
           alert = Text('Fire Alert!');
         });
-      }
-    });
-
-    //! gas leak
-    dbR.child('Alert/gas').onValue.listen((event) {
-      final gas = event.snapshot.value;
-      if (gas == 0) {
-        setState(() {
-          alertIcon = Icon(Icons.check);
-          alert = Text('No nothing g');
-        });
-      } else {
+      } else if (gas == 1) {
         setState(() {
           alertIcon = Icon(Icons.gas_meter);
-          alert = Text('Gas Leak!');
+          alert = Text('Gas leak!');
         });
       }
-    });
-
-    var info = dbR.child('Alert/gas').onValue.listen((event) {
-      final 
-    });
-     
-
-    //! all
-    dbR.child('Alert/all').onValue.listen((event) {
-      final all = event.snapshot.value;
-      sum = gas + fire;
-      print(sum);
-      if (sum > 1) {
-        setState(() {
-          alertIcon = Icon(Icons.dangerous);
-          alert = Text('Many alerts detected!');
-        });
-      }
-    });
+    } else if (sum == 0) {
+      setState(() {
+        alertIcon = Icon(Icons.check);
+        alert = Text('No Nothing');
+      });
+    } else if (sum > 1) {
+      setState(() {
+        alertIcon = Icon(Icons.dangerous);
+        alert = Text('Multiple Alerts found');
+      });
+    }
   }
 
   @override
