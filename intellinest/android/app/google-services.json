@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992956421983",
+    "project_id": "intellinest-32cd1",
+    "storage_bucket": "intellinest-32cd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992956421983:android:60d56d81de4711ba0648ea",
+        "android_client_info": {
+          "package_name": "com.example.intellinest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPm9n_eYuDN3JLUJd0ETMzaXg7pAm7w_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
