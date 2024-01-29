@@ -11,23 +11,63 @@ class AlertBox extends StatefulWidget {
 class AlertBoxState extends State<AlertBox> {
   final dbR = FirebaseDatabase.instance.ref();
   var alert;
-  final value = false;
+  // final value = false;
   late Icon alertIcon;
+  // var alertIcon = Icon(Icons.check);
+  int sum = 0;
+  int gas = 0;
+  int fire = 0;
 
   @override
   void initState() {
     super.initState();
-    dbR.child('Alert').onValue.listen((event) {
-      final value = event.snapshot.value;
-      if (value != false) {
+
+    //! fire alert
+    dbR.child('Alert/fire').onValue.listen((event) {
+      final fire = event.snapshot.value;
+      if (fire == 0) {
         setState(() {
-          alertIcon = Icon(Icons.dangerous_sharp);
-          alert = Text('Alert!');
+          alertIcon = Icon(Icons.check);
+          alert = Text('No nothing f');
         });
       } else {
         setState(() {
+          alertIcon = Icon(Icons.fireplace_outlined);
+          alert = Text('Fire Alert!');
+        });
+      }
+    });
+
+    //! gas leak
+    dbR.child('Alert/gas').onValue.listen((event) {
+      final gas = event.snapshot.value;
+      if (gas == 0) {
+        setState(() {
           alertIcon = Icon(Icons.check);
-          alert = Text('No nothing');
+          alert = Text('No nothing g');
+        });
+      } else {
+        setState(() {
+          alertIcon = Icon(Icons.gas_meter);
+          alert = Text('Gas Leak!');
+        });
+      }
+    });
+
+    var info = dbR.child('Alert/gas').onValue.listen((event) {
+      final 
+    });
+     
+
+    //! all
+    dbR.child('Alert/all').onValue.listen((event) {
+      final all = event.snapshot.value;
+      sum = gas + fire;
+      print(sum);
+      if (sum > 1) {
+        setState(() {
+          alertIcon = Icon(Icons.dangerous);
+          alert = Text('Many alerts detected!');
         });
       }
     });
