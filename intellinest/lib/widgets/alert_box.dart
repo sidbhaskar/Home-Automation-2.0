@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:intellinest/widgets/alert_tiles.dart';
 
 class AlertBox extends StatefulWidget {
   const AlertBox({super.key});
@@ -19,6 +20,8 @@ class AlertBoxState extends State<AlertBox> {
   int sum = 0;
   int gas = 0;
   int fire = 0;
+
+  StreamController<bool> _streamController = StreamController<bool>.broadcast();
 
   @override
   void initState() {
@@ -60,17 +63,65 @@ class AlertBoxState extends State<AlertBox> {
         alert = Text('Multiple Alerts found');
       });
     }
+
+    _streamController.add(true);
+  }
+
+  Widget alertTileSystem(
+      {required String alertName, required Icon dialogAlertIcon}) {
+    return AlertTile(
+      alertName: alertName,
+      dialogAlertIcon: dialogAlertIcon,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [alertIcon, alert],
+    return GestureDetector(
+      onTap: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Alerts !'),
+              content: StreamBuilder<bool>(
+                stream: _streamController.stream,
+                builder: (context, snapshot) {
+                  return Column(
+                    children: [
+                      if (fire == 1)
+                        alertTileSystem(
+                          alertName: 'Fire Detected!',
+                          dialogAlertIcon: Icon(Icons.fireplace_outlined),
+                        ),
+                      if (gas == 1)
+                        alertTileSystem(
+                          alertName: 'gas!',
+                          dialogAlertIcon: Icon(Icons.gas_meter),
+                        ),
+                    ],
+                  );
+                },
+              ),
+            );
+          },
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(border: Border.all()),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [alertIcon, alert],
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _streamController.close();
+    super.dispose();
   }
 }
