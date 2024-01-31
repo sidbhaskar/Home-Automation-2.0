@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
         // Successful login, navigate to the home screen.
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => TheFirstPage(),
         ));
       } catch (e) {
         // Handle login errors, e.g., display an error message.

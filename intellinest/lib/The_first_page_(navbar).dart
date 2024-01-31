@@ -3,19 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:intellinest/logins_screen.dart';
 import 'package:intellinest/pages/home_page.dart';
 import 'package:intellinest/pages/monitoring_page.dart';
-import 'package:intellinest/pages/setting_page.dart';
+import 'package:intellinest/pages/setting.dart';
 
 class TheFirstPage extends StatefulWidget {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   TheFirstPage({super.key});
-  void _signOut(BuildContext context) async {
-    await _auth.signOut();
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
-      ),
-    );
-  }
 
   @override
   State<TheFirstPage> createState() => _TheFirstPageState();
@@ -27,7 +18,7 @@ class _TheFirstPageState extends State<TheFirstPage> {
   final _pageOptions = [
     HomePage(),
     MonitoringPage(),
-    SettingPage(),
+    SettingsPage(),
   ];
 
   @override

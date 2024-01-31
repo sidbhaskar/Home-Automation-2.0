@@ -14,7 +14,7 @@ class AlertBox extends StatefulWidget {
 
 class AlertBoxState extends State<AlertBox> {
   final dbR = FirebaseDatabase.instance.ref();
-  var alert = Text('No Nothing');
+  var alert = Text('No Alerts');
   // final value = false;
   // late Icon alertIcon;
   Icon alertIcon = Icon(Icons.check);
@@ -56,7 +56,7 @@ class AlertBoxState extends State<AlertBox> {
     } else if (sum == 0) {
       setState(() {
         alertIcon = Icon(Icons.check);
-        alert = Text('No Nothing');
+        alert = Text('No Alerts');
       });
     } else if (sum > 1) {
       setState(() {
