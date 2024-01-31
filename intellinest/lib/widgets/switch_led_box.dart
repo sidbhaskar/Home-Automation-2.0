@@ -57,13 +57,17 @@ class _SwitchLedBoxState extends State<SwitchLedBox> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    //  isBulbOn ? Icons.lightbulb : Icons.lightbulb_outline
-                    isSwitchOn ? Icons.lightbulb : Icons.lightbulb_outline,
-                    size: 44,
-                  ),
-                ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: isSwitchOn
+                        ? Image.asset(
+                            'icons/ceiling-lamp.png',
+                            height: 38,
+                          )
+                        : Image.asset(
+                            'icons/ceiling-lamp.png',
+                            height: 38,
+                            color: Colors.grey,
+                          )),
                 const Padding(
                   padding: EdgeInsets.only(left: 8.0, top: 5),
                   child: Text(
@@ -86,6 +90,7 @@ class _SwitchLedBoxState extends State<SwitchLedBox> {
                 ),
                 Switch(
                   activeColor: Colors.white,
+                  activeTrackColor: Colors.blue,
                   value: isSwitchOn,
                   onChanged: (value) {
                     toggleBulb();

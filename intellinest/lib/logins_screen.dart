@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intellinest/the_first_page.dart';
 
 class AuthenticationWrapper extends StatelessWidget {
@@ -35,11 +36,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+      // final textController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String _email = "";
   String _password = "";
+
 
   void _signInWithEmailAndPassword() async {
     if (_formKey.currentState!.validate()) {
@@ -97,6 +100,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
+              // Padding(
+              //   padding:
+              //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              //   child: TextFormField(
+              //     controller: textController,
+              //     decoration: const InputDecoration(
+              //       prefixIcon: Icon(Icons.alternate_email),
+              //       contentPadding: EdgeInsets.all(10),
+              //       labelText: 'Name',
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 16),

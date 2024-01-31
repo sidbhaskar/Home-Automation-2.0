@@ -58,11 +58,16 @@ class _SwitchFanBoxState extends State<SwitchFanBox> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    //  isBulbOn ? Icons.lightbulb : Icons.lightbulb_outline
-                    isSwitchOn ? Icons.wind_power : Icons.wind_power_outlined,
-                    size: 42,
-                  ),
+                  child: isSwitchOn
+                      ? Image.asset(
+                          'icons/fan.png',
+                          height: 35,
+                        )
+                      : Image.asset(
+                          'icons/fan.png',
+                          height: 35,
+                          color: Colors.grey,
+                        ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 8, top: 5),
@@ -86,6 +91,7 @@ class _SwitchFanBoxState extends State<SwitchFanBox> {
                 ),
                 Switch(
                   activeColor: Colors.white,
+                  activeTrackColor: Colors.blue,
                   value: isSwitchOn,
                   onChanged: (value) {
                     toggleFan();

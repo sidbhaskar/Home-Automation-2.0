@@ -14,34 +14,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // String name = textController;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 25,
+        toolbarHeight: 15,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text(
-              'Hello,',
-              style: GoogleFonts.poppins(
-                fontSize: 35,
-                fontWeight: FontWeight.w700,
-                color: Colors.white70,
+            child: SafeArea(
+              child: Text(
+                'Hello,',
+                style: GoogleFonts.poppins(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white70,
+                ),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'User',
+              'Siddharth',
               style: GoogleFonts.poppins(
                 fontSize: 35,
                 fontWeight: FontWeight.w700,
-                color: Colors.white70,
+                color: Colors.blue[500],
               ),
             ),
           ),
