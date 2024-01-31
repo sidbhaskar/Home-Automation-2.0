@@ -10,7 +10,7 @@ class AllGood extends StatelessWidget {
       width: 300,
       child: Center(
           child: Text(
-        'Everthing is fine :)',
+        'Everthing is fine',
         style: TextStyle(fontSize: 22),
       )),
     );
