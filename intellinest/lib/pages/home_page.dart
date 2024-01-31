@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'Siddharth',
+              'User',
               style: GoogleFonts.poppins(
                 fontSize: 35,
                 fontWeight: FontWeight.w700,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

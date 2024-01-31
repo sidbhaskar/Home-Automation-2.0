@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intellinest/widgets/alert_tiles.dart';
+import 'package:intellinest/widgets/all_good_box.dart';
 
 class AlertBox extends StatefulWidget {
   const AlertBox({super.key});
@@ -13,10 +14,10 @@ class AlertBox extends StatefulWidget {
 
 class AlertBoxState extends State<AlertBox> {
   final dbR = FirebaseDatabase.instance.ref();
-  var alert;
+  var alert = Text('No Nothing');
   // final value = false;
-  late Icon alertIcon;
-  // var alertIcon = Icon(Icons.check);
+  // late Icon alertIcon;
+  Icon alertIcon = Icon(Icons.check);
   int sum = 0;
   int gas = 0;
   int fire = 0;
@@ -87,19 +88,23 @@ class AlertBoxState extends State<AlertBox> {
               content: StreamBuilder<bool>(
                 stream: _streamController.stream,
                 builder: (context, snapshot) {
-                  return Column(
-                    children: [
-                      if (fire == 1)
-                        alertTileSystem(
-                          alertName: 'Fire Detected!',
-                          dialogAlertIcon: Icon(Icons.fireplace_outlined),
-                        ),
-                      if (gas == 1)
-                        alertTileSystem(
-                          alertName: 'gas!',
-                          dialogAlertIcon: Icon(Icons.gas_meter),
-                        ),
-                    ],
+                  return Container(
+                    height: 200,
+                    child: Column(
+                      children: [
+                        if (fire == 1)
+                          alertTileSystem(
+                            alertName: 'Fire Detected!',
+                            dialogAlertIcon: Icon(Icons.fireplace_outlined),
+                          ),
+                        if (gas == 1)
+                          alertTileSystem(
+                            alertName: 'gas!',
+                            dialogAlertIcon: Icon(Icons.gas_meter),
+                          ),
+                        if ((fire == 0) & (gas == 0)) AllGood(),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -108,7 +113,7 @@ class AlertBoxState extends State<AlertBox> {
         );
       },
       child: Container(
-        decoration: BoxDecoration(border: Border.all()),
+        decoration: BoxDecoration(),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
