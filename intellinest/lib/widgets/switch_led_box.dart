@@ -57,7 +57,7 @@ class _SwitchLedBoxState extends State<SwitchLedBox> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     //  isBulbOn ? Icons.lightbulb : Icons.lightbulb_outline
                     isSwitchOn ? Icons.lightbulb : Icons.lightbulb_outline,
@@ -82,7 +82,7 @@ class _SwitchLedBoxState extends State<SwitchLedBox> {
               children: [
                 Text(
                   ' ${isSwitchOn ? 'ON' : 'OFF'}',
-                  style: TextStyle(color: Colors.white38),
+                  style: const TextStyle(color: Colors.white38),
                 ),
                 Switch(
                   activeColor: Colors.white,

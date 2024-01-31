@@ -1,12 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intellinest/logins_screen.dart';
 import 'package:intellinest/pages/home_page.dart';
 import 'package:intellinest/pages/monitoring_page.dart';
 import 'package:intellinest/pages/setting.dart';
 
 class TheFirstPage extends StatefulWidget {
-  TheFirstPage({super.key});
+  const TheFirstPage({super.key});
 
   @override
   State<TheFirstPage> createState() => _TheFirstPageState();
@@ -16,8 +14,8 @@ class _TheFirstPageState extends State<TheFirstPage> {
   int selectedPage = 0;
 
   final _pageOptions = [
-    HomePage(),
-    MonitoringPage(),
+    const HomePage(),
+    const MonitoringPage(),
     SettingsPage(),
   ];
 

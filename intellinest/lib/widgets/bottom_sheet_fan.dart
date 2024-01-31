@@ -67,7 +67,7 @@ class _FanBottomScreenState extends State<FanBottomScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       width: double.infinity,
       child: Column(
@@ -86,7 +86,7 @@ class _FanBottomScreenState extends State<FanBottomScreen> {
               ),
               ElevatedButton(
                 onPressed: timerRunning ? null : startCountdown,
-                child: Text('Start'),
+                child: const Text('Start'),
               ),
             ],
           ),
@@ -103,7 +103,7 @@ class _FanBottomScreenState extends State<FanBottomScreen> {
             children: [
               Text(
                 '$timerValue Seconds',
-                style: TextStyle(fontSize: 20.0),
+                style: const TextStyle(fontSize: 20.0),
               ),
               Switch(
                 value: isSwitchOn,

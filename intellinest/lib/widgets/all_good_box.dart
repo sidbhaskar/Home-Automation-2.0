@@ -5,7 +5,7 @@ class AllGood extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 175,
       width: 300,
       child: Center(

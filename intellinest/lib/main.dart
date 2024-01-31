@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intellinest/firebase_options.dart';
 import 'package:intellinest/logins_screen.dart';
-import 'package:intellinest/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intellinest/The_first_page_(navbar).dart';
-import 'package:intellinest/pages/home_page.dart';
+import 'package:intellinest/the_first_page.dart';
 
 class AuthenticationWrapper extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,7 +17,7 @@ class AuthenticationWrapper extends StatelessWidget {
           return const CircularProgressIndicator();
         } else if (snapshot.hasData) {
           // User is logged in, show the home screen.
-          return TheFirstPage();
+          return const TheFirstPage();
         } else {
           // User is not logged in, show the login screen.
           return const LoginScreen();
@@ -149,12 +148,12 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: _signInWithEmailAndPassword,
-                child: Text('Login'),
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w700),
                   padding: const EdgeInsets.only(left: 50, right: 50),
                 ),
+                child: const Text('Login'),
               ),
             ],
           ),
