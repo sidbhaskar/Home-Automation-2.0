@@ -1,8 +1,10 @@
-import 'dart:convert';
 import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Graph extends StatefulWidget {
   const Graph({super.key});
@@ -18,13 +20,13 @@ class _GraphState extends State<Graph> {
 
   Future<Map<String, dynamic>> getDataFromFirebase(String dataType) async {
     String url =
-        "https://review-2-3b64e-default-rtdb.firebaseio.com/.json"; // Replace with your Firebase URL
+        "https://intellinest-32cd1-default-rtdb.firebaseio.com/.json"; // Replace with your Firebase URL
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final dynamic jsonResponse = json.decode(response.body);
-      if (jsonResponse.containsKey('Time') &&
+      if (jsonResponse.containsKey('Sensors/Time') &&
           jsonResponse.containsKey(dataType)) {
-        final String time = jsonResponse['Time'].toString();
+        final String time = jsonResponse['Sensors/Time'].toString();
         final int data = jsonResponse[dataType] as int;
         return {
           'time': time,
@@ -40,9 +42,9 @@ class _GraphState extends State<Graph> {
 
   Future<void> loadDataPoints() async {
     final Map<String, dynamic> humidityData =
-        await getDataFromFirebase('Humidity');
+        await getDataFromFirebase('Sensors/Humidity');
     final Map<String, dynamic> temperatureData =
-        await getDataFromFirebase('Temperature');
+        await getDataFromFirebase('Sensors/Temperature');
 
     setState(() {
       humidityDataPoints.add(DataPoint(
@@ -79,10 +81,10 @@ class _GraphState extends State<Graph> {
   Widget build(BuildContext context) {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: const ChartTitle(
+      title: ChartTitle(
         text: 'Humidity and Temperature Graph',
         alignment: ChartAlignment.near,
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontFamily: 'Roboto',
           fontSize: 18,
           color: Colors.white70,
@@ -90,18 +92,16 @@ class _GraphState extends State<Graph> {
         ),
       ),
       enableAxisAnimation: true,
-      primaryXAxis: const CategoryAxis(
-        majorGridLines: MajorGridLines(width: 0),
+      primaryXAxis: CategoryAxis(
+        majorGridLines: const MajorGridLines(width: 0),
       ),
-      primaryYAxis: const NumericAxis(
-        majorGridLines: MajorGridLines(width: 0),
+      primaryYAxis: NumericAxis(
+        majorGridLines: const MajorGridLines(width: 0),
         minimum: 0,
         maximum: 110,
         interval: 20,
       ),
-      series:
-          //  <ChartSeries>
-          [
+      series: <CartesianSeries>[
         SplineAreaSeries<DataPoint, String>(
           splineType: SplineType.cardinal,
           cardinalSplineTension: 0.9,

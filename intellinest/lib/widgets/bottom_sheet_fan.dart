@@ -68,7 +68,7 @@ class _FanBottomScreenState extends State<FanBottomScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 200,
       width: double.infinity,
       child: Column(
         children: [

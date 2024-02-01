@@ -39,8 +39,11 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_database: ^10.4.0
   firebase_auth: ^4.16.0
-  syncfusion_flutter_charts: ^24.1.47
+  html: ^0.15.4
+  syncfusion_flutter_charts: ^24.2.3
   http: ^1.2.0
+  syncfusion_flutter_gauges: ^24.2.3
+
 
 dev_dependencies:
   flutter_test:

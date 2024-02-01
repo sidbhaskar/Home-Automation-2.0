@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 15,
+        toolbarHeight: 30,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,11 +40,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              'Siddharth',
+              'User',
               style: GoogleFonts.poppins(
                 fontSize: 35,
                 fontWeight: FontWeight.w700,
-                color: Colors.blue[500],
+                color: Colors.blue[300],
               ),
             ),
           ),
@@ -72,32 +72,35 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 15,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return LedBottomScreen();
-                    },
-                  );
-                },
-                child: SwitchLedBox(),
-              ),
-              GestureDetector(
-                onTap: () {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return FanBottomScreen();
-                    },
-                  );
-                },
-                child: SwitchFanBox(),
-              ),
-            ],
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return LedBottomScreen();
+                      },
+                    );
+                  },
+                  child: SwitchLedBox(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return FanBottomScreen();
+                      },
+                    );
+                  },
+                  child: SwitchFanBox(),
+                ),
+              ],
+            ),
           )
         ],
       ),

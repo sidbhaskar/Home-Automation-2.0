@@ -18,12 +18,12 @@ class _AlertTileState extends State<AlertTile> {
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: BorderRadius.circular(25),
-        color: Colors.red[200],
+        color: Colors.black87,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          widget.dialogAlertIcon,
+          // widget.dialogAlertIcon,
           Text(
             widget.alertName,
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),

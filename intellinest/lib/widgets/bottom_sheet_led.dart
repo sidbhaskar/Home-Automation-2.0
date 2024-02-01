@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class LedBottomScreen extends StatefulWidget {
-  const LedBottomScreen({super.key});
+  const LedBottomScreen({Key? key}) : super(key: key);
 
   @override
   State<LedBottomScreen> createState() => _LedBottomScreenState();
@@ -68,35 +68,30 @@ class _LedBottomScreenState extends State<LedBottomScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      // height: 00,
       width: double.infinity,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //! ...
+          // CircularSlider(),
+          //! ...
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                alignment: Alignment.topLeft,
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Start The Timer :',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
               ElevatedButton(
                 onPressed: timerRunning ? null : startCountdown,
                 child: const Text('Start'),
               ),
+              Slider(
+                value: timerValue.toDouble(),
+                min: 0,
+                max: 60,
+                onChanged: (value) {
+                  setTimer(value.toInt());
+                },
+              ),
             ],
-          ),
-          Slider(
-            value: timerValue.toDouble(),
-            min: 0,
-            max: 60,
-            onChanged: (value) {
-              setTimer(value.toInt());
-            },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -41,9 +41,9 @@ class _MonitoringPageState extends State<MonitoringPage> {
               ),
             ),
 
-            SizedBox(
-              height: 60,
-            ),
+            // SizedBox(
+            //   height: 60,
+            // ),
 
             //! content starts
             Graph(),

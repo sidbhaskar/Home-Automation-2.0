@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intellinest/logins_screen.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -26,24 +27,28 @@ class _SettingsPageState extends State<SettingsPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Center(
-            child: Text(
-              'LOGOUT',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          Center(
+            child: Text('Logging Out ?',
+                style: GoogleFonts.poppins(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+          Image.asset(
+            'icons/logout.png',
+            height: 390,
           ),
           const SizedBox(
-            height: 30,
+            height: 40,
           ),
           ElevatedButton(
             onPressed: () => widget._signOut(context),
             style: ElevatedButton.styleFrom(
-              textStyle:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-              padding: const EdgeInsets.only(left: 50, right: 50),
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+              padding: const EdgeInsets.only(left: 30, right: 30),
             ),
             child: const Text('Logout'),
           )

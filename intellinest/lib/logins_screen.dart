@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intellinest/the_first_page.dart';
 
 class AuthenticationWrapper extends StatelessWidget {
@@ -36,13 +37,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-      // final textController = TextEditingController();
+  // final textController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String _email = "";
   String _password = "";
-
 
   void _signInWithEmailAndPassword() async {
     if (_formKey.currentState!.validate()) {
@@ -82,95 +82,101 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  SizedBox(width: 30),
-                  Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 40,
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Center(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(width: 30),
+                      Text('Login',
+                          style: GoogleFonts.poppins(
+                              fontSize: 40, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Image.asset(
+                    'icons/login.png',
+                    height: 400,
+                  ),
+                  // Padding(
+                  //   padding:
+                  //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  //   child: TextFormField(
+                  //     controller: textController,
+                  //     decoration: const InputDecoration(
+                  //       prefixIcon: Icon(Icons.alternate_email),
+                  //       contentPadding: EdgeInsets.all(10),
+                  //       labelText: 'Name',
+                  //     ),
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        if (!value.contains('@')) {
+                          return 'Invalid email';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          _email = value;
+                        });
+                      },
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.alternate_email),
+                        contentPadding: EdgeInsets.all(10),
+                        labelText: 'Email',
+                      ),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
+                    child: TextFormField(
+                      obscureText: true,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          _password = value;
+                        });
+                      },
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.lock_outline),
+                        contentPadding: EdgeInsets.all(10),
+                        labelText: 'Password',
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20.0),
+                  ElevatedButton(
+                    onPressed: _signInWithEmailAndPassword,
+                    style: ElevatedButton.styleFrom(
+                      textStyle: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.w700),
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                    ),
+                    child: const Text('Login'),
                   ),
                 ],
               ),
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              //   child: TextFormField(
-              //     controller: textController,
-              //     decoration: const InputDecoration(
-              //       prefixIcon: Icon(Icons.alternate_email),
-              //       contentPadding: EdgeInsets.all(10),
-              //       labelText: 'Name',
-              //     ),
-              //   ),
-              // ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                child: TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Invalid email';
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _email = value;
-                    });
-                  },
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.alternate_email),
-                    contentPadding: EdgeInsets.all(10),
-                    labelText: 'Email',
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                child: TextFormField(
-                  obscureText: true,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _password = value;
-                    });
-                  },
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock_outline),
-                    contentPadding: EdgeInsets.all(10),
-                    labelText: 'Password',
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
-                onPressed: _signInWithEmailAndPassword,
-                style: ElevatedButton.styleFrom(
-                  textStyle: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w700),
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                ),
-                child: const Text('Login'),
-              ),
-            ],
+            ),
           ),
         ),
       ),

@@ -25,6 +25,8 @@ class AlertBoxState extends State<AlertBox> {
   int sum = 0;
   int gas = 0;
   int fire = 0;
+  int soil = 0;
+  int water = 0;
 
   StreamController<bool> _streamController = StreamController<bool>.broadcast();
 
@@ -40,10 +42,19 @@ class AlertBoxState extends State<AlertBox> {
       gas = event.snapshot.value as int;
       updateAlertState();
     });
+
+    dbR.child('Sensors/Soil Moisture').onValue.listen((event) {
+      soil = event.snapshot.value as int;
+      updateAlertState();
+    });
+    dbR.child('Sensors/Water Sensor').onValue.listen((event) {
+      water = event.snapshot.value as int;
+      updateAlertState();
+    });
   }
 
   void updateAlertState() {
-    sum = gas + fire;
+    sum = gas + fire + soil + water;
 
     if (sum == 1) {
       if (fire == 1) {
@@ -72,6 +83,36 @@ class AlertBoxState extends State<AlertBox> {
             style: GoogleFonts.poppins(
               fontSize: 25,
               color: Colors.blueGrey[500],
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        });
+      } else if (soil == 1) {
+        setState(() {
+          alertIcon = Image.asset(
+            'icons/plant.png',
+            height: 80,
+          );
+          alert = Text(
+            'Soil is fry!',
+            style: GoogleFonts.poppins(
+              fontSize: 25,
+              color: Colors.green[700],
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        });
+      } else if (water == 1) {
+        setState(() {
+          alertIcon = Image.asset(
+            'icons/sea-level.png',
+            height: 80,
+          );
+          alert = Text(
+            'Water Overflow!',
+            style: GoogleFonts.poppins(
+              fontSize: 25,
+              color: Colors.blue[500],
               fontWeight: FontWeight.bold,
             ),
           );
@@ -131,12 +172,19 @@ class AlertBoxState extends State<AlertBox> {
               filter: ImageFilter.blur(
                   sigmaX: 2.0, sigmaY: 2.0), // Adjust blur intensity as needed
               child: AlertDialog(
-                title: Text('Alerts !'),
+                backgroundColor: Colors.black87,
+                title: Text(
+                  'Alerts !',
+                  style: GoogleFonts.poppins(
+                      fontSize: 35, fontWeight: FontWeight.bold),
+                ),
                 content: StreamBuilder<bool>(
                   stream: _streamController.stream,
                   builder: (context, snapshot) {
                     return Container(
-                      height: 200,
+                      //!
+                      height: sum > 2 ? 400 : 200,
+
                       child: Column(
                         children: [
                           if (fire == 1)
@@ -144,12 +192,35 @@ class AlertBoxState extends State<AlertBox> {
                               alertName: 'Fire Detected!',
                               dialogAlertIcon: Icon(Icons.fireplace_outlined),
                             ),
+                          SizedBox(
+                            height: 15,
+                          ),
                           if (gas == 1)
                             alertTileSystem(
-                              alertName: 'gas!',
+                              alertName: 'Gas leak!',
                               dialogAlertIcon: Icon(Icons.gas_meter),
                             ),
-                          if ((fire == 0) & (gas == 0)) AllGood(),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          if (soil == 1)
+                            alertTileSystem(
+                              alertName: 'Soil is fry!',
+                              dialogAlertIcon: Icon(Icons.gas_meter),
+                            ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          if (water == 1)
+                            alertTileSystem(
+                              alertName: 'Water Overflow!',
+                              dialogAlertIcon: Icon(Icons.gas_meter),
+                            ),
+                          if ((fire == 0) &
+                              (gas == 0) &
+                              (soil == 0) &
+                              (water == 0))
+                            AllGood(),
                         ],
                       ),
                     );
