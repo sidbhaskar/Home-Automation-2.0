@@ -68,17 +68,26 @@ class _LedBottomScreenState extends State<LedBottomScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // height: 00,
+      height: 200,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //! ...
-          // CircularSlider(),
+          // Text('Start the timer',style: TextStyle(),),
           //! ...
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Container(
+                alignment: Alignment.topLeft,
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  'Start The Timer :',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
               ElevatedButton(
                 onPressed: timerRunning ? null : startCountdown,
                 child: const Text('Start'),

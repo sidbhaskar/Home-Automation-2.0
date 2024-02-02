@@ -27,6 +27,15 @@ class AlertBoxState extends State<AlertBox> {
   int fire = 0;
   int soil = 0;
   int water = 0;
+  int waterdb = 0;
+
+  double mapValue(double inputValue, double inputMin, double inputMax,
+      double outputMin, double outputMax) {
+    return outputMin +
+        (outputMax - outputMin) *
+            (inputValue - inputMin) /
+            (inputMax - inputMin);
+  }
 
   StreamController<bool> _streamController = StreamController<bool>.broadcast();
 
@@ -47,9 +56,23 @@ class AlertBoxState extends State<AlertBox> {
       soil = event.snapshot.value as int;
       updateAlertState();
     });
+
     dbR.child('Sensors/Water Sensor').onValue.listen((event) {
-      water = event.snapshot.value as int;
-      updateAlertState();
+      // Update the water level and trigger a rebuild
+      setState(() {
+        waterdb = event.snapshot.value as int;
+        // print(waterdb);
+      });
+
+      double mappedWaterLevel = mapValue(waterdb.toDouble(), 0, 70, 0, 100);
+      print('mappe:$mappedWaterLevel');
+      if (mappedWaterLevel < 95) {
+        water = 0;
+        updateAlertState();
+      } else if (mappedWaterLevel >= 95) {
+        water = 1;
+        updateAlertState();
+      }
     });
   }
 
@@ -94,7 +117,7 @@ class AlertBoxState extends State<AlertBox> {
             height: 80,
           );
           alert = Text(
-            'Soil is fry!',
+            'Soil is dry!',
             style: GoogleFonts.poppins(
               fontSize: 25,
               color: Colors.green[700],
@@ -205,7 +228,7 @@ class AlertBoxState extends State<AlertBox> {
                           ),
                           if (soil == 1)
                             alertTileSystem(
-                              alertName: 'Soil is fry!',
+                              alertName: 'Soil is dry!',
                               dialogAlertIcon: Icon(Icons.gas_meter),
                             ),
                           SizedBox(

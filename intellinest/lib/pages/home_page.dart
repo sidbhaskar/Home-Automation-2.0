@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intellinest/widgets/alert_box.dart';
@@ -5,6 +6,7 @@ import 'package:intellinest/widgets/bottom_sheet_fan.dart';
 import 'package:intellinest/widgets/bottom_sheet_led.dart';
 import 'package:intellinest/widgets/switch_fan_box.dart';
 import 'package:intellinest/widgets/switch_led_box.dart';
+import 'package:intellinest/widgets/water_level_progress.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -101,7 +103,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(28.0),
+            child: WaterLevelProgress(),
+          ),
         ],
       ),
     );

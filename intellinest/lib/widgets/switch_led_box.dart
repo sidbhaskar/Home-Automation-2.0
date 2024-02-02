@@ -20,7 +20,7 @@ class _SwitchLedBoxState extends State<SwitchLedBox> {
     dbR.child('Pin16/LED').onValue.listen((event) {
       final value = event.snapshot.value;
       if (value != null) {
-        // Update the switch state based on the received value
+        // Update the switch state based on the received valuez
         setState(() {
           isSwitchOn = value == 1; // True if value is 1, false otherwise
         });
