@@ -56,10 +56,10 @@ class WaterLevelProgressState extends State<WaterLevelProgress> {
                     backgroundColor: Colors.grey,
                     valueColor: mappedWaterLevel < 20
                         ? AlwaysStoppedAnimation<Color>(Colors.yellow.shade800)
-                        : ((mappedWaterLevel > 20) & (mappedWaterLevel < 90))
+                        : ((mappedWaterLevel > 20) & (mappedWaterLevel < 85))
                             ? AlwaysStoppedAnimation<Color>(
                                 Colors.green.shade300)
-                            : (mappedWaterLevel > 90)
+                            : (mappedWaterLevel > 85)
                                 ? AlwaysStoppedAnimation<Color>(
                                     Colors.red.shade300)
                                 : AlwaysStoppedAnimation<Color>(

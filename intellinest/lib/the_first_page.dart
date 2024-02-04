@@ -15,7 +15,7 @@ class _TheFirstPageState extends State<TheFirstPage> {
 
   final _pageOptions = [
     const HomePage(),
-    const MonitoringPage(),
+    // const MonitoringPage(),
     SettingsPage(),
   ];
 
@@ -34,10 +34,10 @@ class _TheFirstPageState extends State<TheFirstPage> {
             ),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.monitor_outlined),
-            label: 'Monitoring',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.monitor_outlined),
+          //   label: 'Monitoring',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',

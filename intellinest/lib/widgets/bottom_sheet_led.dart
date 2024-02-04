@@ -79,15 +79,15 @@ class _LedBottomScreenState extends State<LedBottomScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                alignment: Alignment.topLeft,
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  'Start The Timer :',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
+              // Container(
+              //   alignment: Alignment.topLeft,
+              //   margin: const EdgeInsets.all(10),
+              //   padding: const EdgeInsets.all(10),
+              //   child: const Text(
+              //     'Start The Timer :',
+              //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              //   ),
+              // ),
               ElevatedButton(
                 onPressed: timerRunning ? null : startCountdown,
                 child: const Text('Start'),
