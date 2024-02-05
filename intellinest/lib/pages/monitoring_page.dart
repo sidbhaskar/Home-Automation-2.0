@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intellinest/chart.dart';
+import 'package:intellinest/widgets/alert_tiles.dart';
+import 'package:intellinest/widgets/sensors_list.dart';
 
 class MonitoringPage extends StatefulWidget {
   const MonitoringPage({super.key});
@@ -32,7 +34,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                'Monitoring',
+                'Alert System',
                 style: GoogleFonts.poppins(
                   fontSize: 35,
                   fontWeight: FontWeight.w700,
@@ -46,7 +48,13 @@ class _MonitoringPageState extends State<MonitoringPage> {
             // ),
 
             //! content starts
-            Graph(),
+            // Graph(),
+            Text('Control your Sensors'),
+            Column(
+              children: [
+                SensorsTile(),
+              ],
+            ),
           ],
         ),
       ),

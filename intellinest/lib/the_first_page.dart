@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intellinest/pages/home_page.dart';
 import 'package:intellinest/pages/monitoring_page.dart';
 import 'package:intellinest/pages/setting.dart';
+// import 'package:intellinest/widgets/speech_recognizer.dart';
 
 class TheFirstPage extends StatefulWidget {
   const TheFirstPage({super.key});
@@ -11,11 +12,12 @@ class TheFirstPage extends StatefulWidget {
 }
 
 class _TheFirstPageState extends State<TheFirstPage> {
-  int selectedPage = 0;
+  int selectedPage = 1;
 
   final _pageOptions = [
     const HomePage(),
-    // const MonitoringPage(),
+    // SpeechToTextPage(),
+    const MonitoringPage(),
     SettingsPage(),
   ];
 
@@ -34,10 +36,10 @@ class _TheFirstPageState extends State<TheFirstPage> {
             ),
             label: 'Home',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.monitor_outlined),
-          //   label: 'Monitoring',
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monitor_outlined),
+            label: 'Monitoring',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
