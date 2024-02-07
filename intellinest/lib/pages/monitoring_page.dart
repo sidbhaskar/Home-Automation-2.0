@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intellinest/chart.dart';
-import 'package:intellinest/widgets/alert_tiles.dart';
 import 'package:intellinest/widgets/sensors_list.dart';
+import 'package:intellinest/widgets/sensors_list2.dart';
+import 'package:intellinest/widgets/sensors_list3.dart';
+import 'package:intellinest/widgets/sensors_list4.dart';
+import 'package:intellinest/widgets/sensors_tile5.dart';
 
 class MonitoringPage extends StatefulWidget {
   const MonitoringPage({super.key});
@@ -15,7 +17,7 @@ class _MonitoringPageState extends State<MonitoringPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 30),
+      // appBar: AppBar(toolbarHeight: 30),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,11 +51,38 @@ class _MonitoringPageState extends State<MonitoringPage> {
 
             //! content starts
             // Graph(),
-            Text('Control your Sensors'),
-            Column(
-              children: [
-                SensorsTile(),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Text(
+                'Control your Sensors',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+              ),
+            ),
+            const SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SensorsTile(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SensorsTile2(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SensorsTile3(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SensorsTile4(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SensorsTile5(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

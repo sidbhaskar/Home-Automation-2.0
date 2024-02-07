@@ -1,16 +1,16 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-class SensorsTile extends StatefulWidget {
-  const SensorsTile({
+class SensorsTile5 extends StatefulWidget {
+  const SensorsTile5({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SensorsTile> createState() => _SensorsTileState();
+  State<SensorsTile5> createState() => _SensorsTile5State();
 }
 
-class _SensorsTileState extends State<SensorsTile> {
+class _SensorsTile5State extends State<SensorsTile5> {
   final dbR = FirebaseDatabase.instance.ref();
 
   bool isSwitchOn = false;
@@ -19,7 +19,7 @@ class _SensorsTileState extends State<SensorsTile> {
   void initState() {
     super.initState();
     // Listen for changes in the 'Pins/LED' value
-    dbR.child('Sensors Alerts/Fire/Fire').onValue.listen((event) {
+    dbR.child('Sensors Alert/Waterp/Waterp').onValue.listen((event) {
       final value = event.snapshot.value;
       if (value != null) {
         // Update the switch state based on the received valuez
@@ -34,8 +34,8 @@ class _SensorsTileState extends State<SensorsTile> {
     setState(() {
       isSwitchOn = !isSwitchOn;
       dbR
-          .child('Sensors Alert/Fire')
-          .set({'Fire': isSwitchOn ? 1 : 0}); // Store 1 for true, 0 for false
+          .child('Sensors Alert/Waterp')
+          .set({'Waterp': isSwitchOn ? 1 : 0}); // Store 1 for true, 0 for false
     });
   }
 
@@ -56,7 +56,7 @@ class _SensorsTileState extends State<SensorsTile> {
           children: [
             //!...
             const Text(
-              'Fire Sensor',
+              'Water Pump',
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
