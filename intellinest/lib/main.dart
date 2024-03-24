@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intellinest/firebase_options.dart';
 import 'package:intellinest/logins_screen.dart';
 
+import 'pages/home_page.dart';
+import 'the_first_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

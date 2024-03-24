@@ -12,7 +12,7 @@ class TheFirstPage extends StatefulWidget {
 }
 
 class _TheFirstPageState extends State<TheFirstPage> {
-  int selectedPage = 1;
+  int selectedPage = 0;
 
   final _pageOptions = [
     const HomePage(),

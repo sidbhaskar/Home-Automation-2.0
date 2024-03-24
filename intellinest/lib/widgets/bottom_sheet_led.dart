@@ -11,9 +11,9 @@ class LedBottomScreen extends StatefulWidget {
 
 class _LedBottomScreenState extends State<LedBottomScreen> {
   final dbR = FirebaseDatabase.instance.ref();
+  bool isSwitchOn = false; // Add this variable
   int timerValue = 0; // Initial timer value in seconds
   bool timerRunning = false;
-  bool isSwitchOn = false; // Add this variable
 
   void toggleBulb() {
     setState(() {

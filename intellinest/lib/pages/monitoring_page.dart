@@ -19,47 +19,47 @@ class _MonitoringPageState extends State<MonitoringPage> {
     return Scaffold(
       // appBar: AppBar(toolbarHeight: 30),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Home',
-                style: GoogleFonts.poppins(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white70,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  'Home',
+                  style: GoogleFonts.poppins(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white70,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                'Alert System',
-                style: GoogleFonts.poppins(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white70,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  'Alert System',
+                  style: GoogleFonts.poppins(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white70,
+                  ),
                 ),
               ),
-            ),
 
-            // SizedBox(
-            //   height: 60,
-            // ),
+              // SizedBox(
+              //   height: 60,
+              // ),
 
-            //! content starts
-            // Graph(),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                'Control your Sensors',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+              //! content starts
+              // Graph(),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text(
+                  'Control your Sensors',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+                ),
               ),
-            ),
-            const SingleChildScrollView(
-              child: Column(
+              Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
@@ -83,8 +83,8 @@ class _MonitoringPageState extends State<MonitoringPage> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

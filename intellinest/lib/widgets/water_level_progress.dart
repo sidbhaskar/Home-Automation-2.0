@@ -48,7 +48,9 @@ class WaterLevelProgressState extends State<WaterLevelProgress> {
               tween: Tween<double>(begin: 0.0, end: mappedWaterLevel / 100),
               builder: (context, double value, child) {
                 return Container(
-                  width: 350,
+                  height: MediaQuery.sizeOf(context).height * 0.09,
+                  width: MediaQuery.sizeOf(context).width * 0.9,
+                  // width: 350,
                   child: LinearProgressIndicator(
                     borderRadius: BorderRadius.circular(15),
                     value: value,

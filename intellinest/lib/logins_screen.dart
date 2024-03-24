@@ -52,9 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
           password: _password,
         );
         // Successful login, navigate to the home screen.
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => TheFirstPage(),
-        ));
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => TheFirstPage(),
+          ),
+        );
       } catch (e) {
         // Handle login errors, e.g., display an error message.
         print("Error: $e");

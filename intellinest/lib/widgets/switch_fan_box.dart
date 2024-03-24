@@ -40,8 +40,8 @@ class _SwitchFanBoxState extends State<SwitchFanBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
-      width: 175,
+      height: MediaQuery.sizeOf(context).height * 0.19,
+      width: MediaQuery.sizeOf(context).width * 0.4,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white30),
         borderRadius: BorderRadius.circular(25),
