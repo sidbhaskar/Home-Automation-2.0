@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044198160864",
+    "project_id": "ghar-wala-project",
+    "storage_bucket": "ghar-wala-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044198160864:android:ff5dbbfe2af7a03e465385",
+        "android_client_info": {
+          "package_name": "com.example.ghar_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKX9WdRNSpidjjcrTedPzvISGTVP0eNMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
