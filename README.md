@@ -54,11 +54,11 @@ IntelliNest is an advanced home automation system powered by an ESP32 microcontr
 
 
 ## Screenshots
-#### Login Screen
-<img src="https://github.com/user-attachments/assets/38d90e24-f1fe-4a87-97e9-e9c2ee6d01a3" width="200" height="400">
+         
+<img src="https://github.com/user-attachments/assets/38d90e24-f1fe-4a87-97e9-e9c2ee6d01a3" width="200" height="400">  <img src="https://github.com/user-attachments/assets/204d23c5-1e8f-4919-98b3-848784ea8f5b" width="200" height="400">  <img src="https://github.com/user-attachments/assets/b80961cf-ef5c-4c3b-a709-1db7e25f9aab" width="200" height="400">
 
-#### Home Screen
-<img src="https://github.com/user-attachments/assets/204d23c5-1e8f-4919-98b3-848784ea8f5b" width="200" height="400">
 
-#### Setting Screen
-<img src="https://github.com/user-attachments/assets/b80961cf-ef5c-4c3b-a709-1db7e25f9aab" width="200" height="400">
+
+
+
+
